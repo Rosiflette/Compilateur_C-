@@ -143,28 +143,34 @@ Noeud* Interpreteur::instSi() {
 
 Noeud*  Interpreteur::instSiRiche(){
      //<instSiRiche> ::=si(<expression>) <seqInst> {sinonsi(<expression>) <seqInst> }[sinon <seqInst>]finsi
-                                //déclarer le vecteur
+    vector<Noeud*> conditionElseIf;       //déclarer le vecteur
+    vector<Noeud*> sequenceElseIf;       //déclarer le vecteur
     testerEtAvancer("si");
     testerEtAvancer("(");
     Noeud* condition = expression(); // On mémorise la condition
     testerEtAvancer(")");
     Noeud* sequence = seqInst();     // On mémorise la séquence d'instruction
+    
     do{
+        testerEtAvancer("sinon");
+        testerEtAvancer("(");
+        Noeud* condition = expression(); // On mémorise la condition
+        testerEtAvancer(")");
+        Noeud* sequence = seqInst();     // On mémorise la séquence d'instruction
+        conditionElseIf.push_back(condition);
+        sequenceElseIf.push_back(sequence);
         
-        testerEtAvancer("(");
-        Noeud* condition = expression(); // On mémorise la condition
-        testerEtAvancer(")");
-        Noeud* sequence = seqInst();     // On mémorise la séquence d'instruction
     }
-    while(testerEtAvancer("sinonsi"));
-    if(testerEtAvancer("sinon")){
-        testerEtAvancer("(");
-        Noeud* condition = expression(); // On mémorise la condition
-        testerEtAvancer(")");
-        Noeud* sequence = seqInst();     // On mémorise la séquence d'instruction
+    while(m_lecteur.getSymbole() == "sinon");
+    if(m_lecteur.getSymbole() == "sinonsi"){
+        Noeud* sequenceElse = seqInst();     // On mémorise la séquence d'instruction
+        testerEtAvancer("finsi");
+    return new NoeudInstSiRiche(condition,sequence,conditionElseIf,sequenceElseIf,sequenceElse);
     }
-    
-    
+    else{
+        testerEtAvancer("finsi");
+        return new NoeudInstSiRiche(condition,sequence,conditionElseIf,sequenceElseIf,nullptr);
+    }
     
 }
 

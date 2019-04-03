@@ -91,4 +91,18 @@ private:
     Noeud*  m_condition;
     Noeud*  m_sequence;
 };
+////////////////////////////////////////////////////////////////////////////////
+class NoeudInstSiRiche : public Noeud {
+public :
+    NoeudInstSiRiche(Noeud* condition, Noeud* sequence, vector<Noeud *> & conditionsSinon ,  vector<Noeud *> & sequencesSinon, Noeud* sequenceElse = nullptr);
+    ~NoeudInstSiRiche() {}
+    int executer();
+private :
+    vector<Noeud *> & m_conditions;
+    vector<Noeud *> & m_sequences;
+    Noeud* m_sequenceSi;
+    Noeud* m_conditionSi;
+    Noeud* m_sequenceElse;
+
+};
 #endif /* ARBREABSTRAIT_H */

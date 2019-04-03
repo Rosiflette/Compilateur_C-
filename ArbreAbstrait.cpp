@@ -81,8 +81,32 @@ int NoeudInstSi::executer() {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+// NoeudInstSiRiche
+////////////////////////////////////////////////////////////////////////////////
+
+NoeudInstSiRiche::NoeudInstSiRiche(Noeud* condition, Noeud* sequence, vector<Noeud *> & conditionsSinon,  vector<Noeud *> & sequencesSinon, Noeud* conditionElse, Noeud* sequenceElse)
+:m_conditionSi(condition),m_sequenceSi(sequence),m_conditions(conditionsSinon),m_sequences(sequencesSinon),m_sequenceElse(sequenceElse)
+{
+    
+}
+
+int NoeudInstSiRiche::executer(){
+    if () {
+        
+    }
+    for(m_conditions.size()) {
+        
+    }
+    if (m_sequenceElse !=nullptr) {
+        
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
 // NoeudInstTq
 ////////////////////////////////////////////////////////////////////////////////
+
+
 
 NoeudInstTq::NoeudInstTq(Noeud* condition, Noeud* sequence)
 :m_condition(condition), m_sequence(sequence) {

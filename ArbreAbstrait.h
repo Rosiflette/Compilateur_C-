@@ -94,12 +94,15 @@ private:
 ////////////////////////////////////////////////////////////////////////////////
 class NoeudInstSiRiche : public Noeud {
 public :
-    NoeudInstSiRiche(Noeud* condition, Noeud* sequence, vector<Noeud *> & conditionsSinon ,  vector<Noeud *> & sequencesSinon, Noeud* sequenceElse = nullptr);
+    NoeudInstSiRiche( Noeud* condition,  Noeud* sequence,  vector<Noeud *> & conditionsSinon,  vector<Noeud *> & sequencesSinon,  Noeud* sequenceElse = nullptr);
+    NoeudInstSiRiche(Noeud* condition,  Noeud* sequence, Noeud* sequenceElse = nullptr);
+    // J'aimerai rendre les 
     ~NoeudInstSiRiche() {}
     int executer();
 private :
-    vector<Noeud *> & m_conditions;
-    vector<Noeud *> & m_sequences;
+    vector<Noeud *> t{nullptr}; // pas beau...
+    vector<Noeud *> & m_conditions =t;
+    vector<Noeud *> & m_sequences =t;
     Noeud* m_sequenceSi;
     Noeud* m_conditionSi;
     Noeud* m_sequenceElse;

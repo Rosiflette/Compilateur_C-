@@ -3,6 +3,7 @@
 #include "Symbole.h"
 #include "SymboleValue.h"
 #include "Exceptions.h"
+#include <typeinfo>
 
 ////////////////////////////////////////////////////////////////////////////////
 // NoeudSeqInst
@@ -84,32 +85,31 @@ int NoeudInstSi::executer() {
 // NoeudInstSiRiche
 ////////////////////////////////////////////////////////////////////////////////
 
-NoeudInstSiRiche::NoeudInstSiRiche( Noeud* condition,  Noeud* sequence,  vector<Noeud *> & conditionsSinon, vector<Noeud *> & sequencesSinon, Noeud* sequenceElse)
+NoeudInstSiRiche::NoeudInstSiRiche(Noeud* condition, Noeud* sequence, vector<Noeud *> & conditionsSinon, vector<Noeud *> & sequencesSinon, Noeud* sequenceElse)
 : m_conditionSi(condition), m_sequenceSi(sequence), m_conditions(conditionsSinon), m_sequences(sequencesSinon), m_sequenceElse(sequenceElse) {
 
 }
-NoeudInstSiRiche::NoeudInstSiRiche(Noeud* condition,  Noeud* sequence, Noeud* sequenceElse)
-: m_conditionSi(condition),  m_sequenceSi(sequence), m_sequenceElse(sequenceElse)
-{
+
+NoeudInstSiRiche::NoeudInstSiRiche(Noeud* condition, Noeud* sequence, Noeud* sequenceElse)
+: m_conditionSi(condition), m_sequenceSi(sequence), m_sequenceElse(sequenceElse) {
 
 }
+
 int NoeudInstSiRiche::executer() {
     bool condition = false;
     if (m_conditionSi->executer()) {
         condition = true;
         m_sequenceSi->executer();
-    }
-    else if (condition !=true){ 
-        int i =0;
-        while (i<m_conditions.size() && condition!=true) {
+    } else if (condition != true) {
+        int i = 0;
+        while (i < m_conditions.size() && condition != true) {
             if (m_conditions[i]->executer()) {
                 condition = true;
                 m_sequences[i]->executer();
             }
             i++;
         }
-    }
-    else{
+    } else {
         if (m_sequenceElse != nullptr) {
             m_sequenceElse->executer();
         }
@@ -134,9 +134,26 @@ int NoeudInstTq::executer() {
 ////////////////////////////////////////////////////////////////////////////////
 // NoeudInstEcrire
 ////////////////////////////////////////////////////////////////////////////////
-//
-//Noeud*  instEcrire(){
-//    //    <instEcrire> ::= ecrire ( <expression> | <chaine> {, <expression> | <chaine>})
-//    
-//    
-//} 
+
+NoeudInstEcrire::NoeudInstEcrire() : m_donnees() {
+    //    <instEcrire> ::= ecrire ( <expression> | <chaine> {, <expression> | <chaine>})
+}
+
+int NoeudInstEcrire::executer() {
+    for (unsigned int i = 0; i < m_donnees.size(); i++) {
+        // On regarde si l'objet pointé par m_donnees est de type SymboleValue et si c'est une chaine
+        if ((typeid (m_donnees[i]) == typeid (SymboleValue))&& *((SymboleValue*) m_donnees[i]) == "<CHAINE>") {
+            // on exécute chaque instruction d'écrire
+            cout << m_donnees[i];
+        } else {
+
+            cout << m_donnees[i]->executer();
+        }
+
+    }
+    return 0; // La valeur renvoyée ne représente rien !
+}
+
+void NoeudInstEcrire::ajoute(Noeud* instruction) {
+    if (instruction != nullptr) m_donnees.push_back(instruction);
+}

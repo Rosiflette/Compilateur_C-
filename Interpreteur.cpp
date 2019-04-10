@@ -199,7 +199,7 @@ Noeud* Interpreteur::instEcrire() {
         m_lecteur.avancer();
     } else
         param = expression();
-    ecr->ajouter(param);
+    ecr->ajoute(param);
     while (m_lecteur.getSymbole() == ",") {
         testerEtAvancer(",");
         if (m_lecteur.getSymbole() == "<CHAINE>") {
@@ -207,7 +207,7 @@ Noeud* Interpreteur::instEcrire() {
             m_lecteur.avancer();
         } else
             param = expression();
-        ecr->ajouter(param);
+        ecr->ajoute(param);
     }
     testerEtAvancer(")");
     return ecr;   

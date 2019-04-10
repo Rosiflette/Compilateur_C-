@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=InterCompil
+PROJECTNAME=Compilateur_C-
 
 # Active Configuration
 DEFAULTCONF=Debug

@@ -108,4 +108,16 @@ private :
     Noeud* m_sequenceElse;
 
 };
+////////////////////////////////////////////////////////////////////////////////
+
+class NoeudInstEcrire : public Noeud {
+public :
+    NoeudInstEcrire();
+    ~NoeudInstEcrire() {}
+    int executer();
+    void ajoute(Noeud* instruction);
+private :
+    vector<Noeud *> m_donnees;
+
+};
 #endif /* ARBREABSTRAIT_H */

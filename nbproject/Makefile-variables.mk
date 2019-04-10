@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
-CND_ARTIFACT_NAME_Debug=intercompil
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/intercompil
+CND_ARTIFACT_NAME_Debug=compilateur_c-
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/compilateur_c-
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
-CND_PACKAGE_NAME_Debug=intercompil.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/intercompil.tar
+CND_PACKAGE_NAME_Debug=compilateurc-.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/compilateurc-.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux
-CND_ARTIFACT_NAME_Release=intercompil
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/intercompil
+CND_ARTIFACT_NAME_Release=compilateur_c-
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/compilateur_c-
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
-CND_PACKAGE_NAME_Release=intercompil.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/intercompil.tar
+CND_PACKAGE_NAME_Release=compilateurc-.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/compilateurc-.tar
 #
 # include compiler specific variables
 #

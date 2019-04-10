@@ -157,3 +157,35 @@ int NoeudInstEcrire::executer() {
 void NoeudInstEcrire::ajoute(Noeud* instruction) {
     if (instruction != nullptr) m_donnees.push_back(instruction);
 }
+
+
+////////////////////////////////////////////////////////////////////////////////
+// NoeudInstRepeter
+////////////////////////////////////////////////////////////////////////////////
+
+NoeudInstRepeter::NoeudInstRepeter(Noeud* instruction, Noeud* condition)
+: m_seqInstru(instruction), m_express(condition) {
+
+}
+
+int NoeudInstRepeter::executer() {
+    while (m_express) {
+        m_seqInstru;
+    }
+    return 0; // La valeur renvoyée ne représente rien !
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// NoeudInstPour
+////////////////////////////////////////////////////////////////////////////////
+
+NoeudInstPour::NoeudInstPour(Noeud* affec, Noeud* expression, Noeud * affect, Noeud* instru)
+: m_affec(affec), m_express(expression), m_affect(affect), m_seqInstru(instru) {
+
+}
+
+int NoeudInstPour::executer() {
+ ////////////////////A COMPLETER
+}

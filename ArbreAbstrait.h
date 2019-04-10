@@ -120,4 +120,35 @@ private :
     vector<Noeud *> m_donnees;
 
 };
+        
+////////////////////////////////////////////////////////////////////////////////
+
+class NoeudInstRepeter : public Noeud {
+public :
+    NoeudInstRepeter(Noeud* instruction, Noeud* expression);
+    ~NoeudInstRepeter() {}
+    int executer();
+private :
+    Noeud * m_seqInstru;
+    Noeud * m_express;
+
+};
+
+////////////////////////////////////////////////////////////////////////////////
+
+class NoeudInstPour : public Noeud {
+public :
+    NoeudInstPour(Noeud* affec, Noeud* expression, Noeud * affect, Noeud* instru);
+    ~NoeudInstPour() {}
+    int executer();
+private :
+    Noeud * m_affec;
+    Noeud * m_express;
+    Noeud * m_affect;
+    Noeud * m_seqInstru;
+
+};
+
+
+
 #endif /* ARBREABSTRAIT_H */

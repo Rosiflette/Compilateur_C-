@@ -72,7 +72,7 @@ Noeud* Interpreteur::inst() {
         return affect;
     } else if (m_lecteur.getSymbole() == "tantque")
         return instTq();
-    else if (m_lecteur.getSymbole() == "si")
+    else if (m_lecteur.getSymbole() == "si") // Mettre dorénavant le siriche.. Test toujours à faire !
         return instSi();
         // Compléter les alternatives chaque fois qu'on rajoute une nouvelle instruction
     else if (m_lecteur.getSymbole() == "ecrire")

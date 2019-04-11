@@ -169,9 +169,9 @@ NoeudInstRepeter::NoeudInstRepeter(Noeud* instruction, Noeud* condition)
 }
 
 int NoeudInstRepeter::executer() {
-    while (m_express) {
-        m_seqInstru;
-    }
+    do{
+        m_seqInstru->executer();
+    } while(m_express->executer());
     return 0; // La valeur renvoyée ne représente rien !
 }
 
@@ -187,5 +187,21 @@ NoeudInstPour::NoeudInstPour(Noeud* affec, Noeud* expression, Noeud * affect, No
 }
 
 int NoeudInstPour::executer() {
- ////////////////////A COMPLETER
+ ////////////////////A COMPLETER Changer nom variable..
+    for(m_affec->executer();m_express->executer();m_affect->executer()){
+        m_seqInstru->executer();
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// NoeudInstLire
+////////////////////////////////////////////////////////////////////////////////
+
+NoeudInstLire::NoeudInstLire()
+:
+{
+}
+
+int NoeudInstLire::executer() {
+    
 }

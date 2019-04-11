@@ -7,13 +7,13 @@ CND_BASEDIR=`pwd`
 CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
-CND_PLATFORM_Debug=GNU-Linux
-CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
+CND_PLATFORM_Debug=None-Windows
+CND_ARTIFACT_DIR_Debug=dist/Debug/None-Windows
 CND_ARTIFACT_NAME_Debug=compilateur_c-
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/compilateur_c-
-CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
+CND_ARTIFACT_PATH_Debug=dist/Debug/None-Windows/compilateur_c-
+CND_PACKAGE_DIR_Debug=dist/Debug/None-Windows/package
 CND_PACKAGE_NAME_Debug=compilateurc-.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/compilateurc-.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/None-Windows/package/compilateurc-.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux

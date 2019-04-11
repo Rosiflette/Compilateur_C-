@@ -7,19 +7,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/users/info/etu-s3/chapellr/m3105-C++/Compilateur/Compilateur_C-/Symbole.cpp</file>
-            <file>file:/users/info/etu-s3/chapellr/m3105-C++/Compilateur/Compilateur_C-/Lecteur.h</file>
-            <file>file:/users/info/etu-s3/chapellr/m3105-C++/Compilateur/Compilateur_C-/ArbreAbstrait.cpp</file>
-            <file>file:/users/info/etu-s3/chapellr/m3105-C++/Compilateur/Compilateur_C-/SymboleValue.cpp</file>
-            <file>file:/users/info/etu-s3/chapellr/m3105-C++/Compilateur/Compilateur_C-/Interpreteur.h</file>
-            <file>file:/users/info/etu-s3/chapellr/m3105-C++/Compilateur/Compilateur_C-/Symbole.h</file>
-            <file>file:/users/info/etu-s3/chapellr/m3105-C++/Compilateur/Compilateur_C-/ArbreAbstrait.h</file>
-            <file>file:/users/info/etu-s3/chapellr/m3105-C++/Compilateur/Compilateur_C-/Lecteur.cpp</file>
-            <file>file:/users/info/etu-s3/chapellr/m3105-C++/Compilateur/Compilateur_C-/Interpreteur.cpp</file>
-            <file>file:/users/info/etu-s3/chapellr/m3105-C++/Compilateur/Compilateur_C-/SymboleValue.h</file>
-            <file>file:/users/info/etu-s3/chapellr/m3105-C++/Compilateur/Compilateur_C-/motsCles.txt</file>
-            <file>file:/users/info/etu-s3/chapellr/m3105-C++/Compilateur/Compilateur_C-/Tantque.txt</file>
-            <file>file:/users/info/etu-s3/chapellr/m3105-C++/Compilateur/Compilateur_C-/programme.txt</file>
+            <file>file:/C:/Users/lucas/Desktop/iut-info/Java/Netbeans/Compilateur_C-/ArbreAbstrait.cpp</file>
+            <file>file:/C:/Users/lucas/Desktop/iut-info/Java/Netbeans/Compilateur_C-/Interpreteur.h</file>
+            <file>file:/C:/Users/lucas/Desktop/iut-info/Java/Netbeans/Compilateur_C-/Interpreteur.cpp</file>
+            <file>file:/C:/Users/lucas/Desktop/iut-info/Java/Netbeans/Compilateur_C-/ArbreAbstrait.h</file>
+            <file>file:/C:/Users/lucas/Desktop/iut-info/Java/Netbeans/Compilateur_C-/Lecteur.cpp</file>
         </group>
     </open-files>
 </project-private>

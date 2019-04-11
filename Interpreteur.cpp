@@ -245,3 +245,8 @@ Noeud* Interpreteur::instPour() {
     testerEtAvancer("finpour");
     return new NoeudInstPour(affect, expresss, affecta, sequence);
 }
+
+Noeud* Interpreteur::instLire() {
+    // <instLire> ::= lire ( <variable> { , <variable> } )
+    // A completer...
+}

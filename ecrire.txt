@@ -2,6 +2,7 @@
 # Les lignes de commentaires commencent par #
 procedure principale()
     i = 18;
-    ecrire("i = ", i)
+    j = 4;
+    ecrire("i = ", i, " et ", j, 3)
 finproc
 # Commentaire Final

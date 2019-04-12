@@ -1,9 +1,11 @@
-#include <stdlib.h>
+#include <typeinfo>
+#include <iostream>
 #include "ArbreAbstrait.h"
 #include "Symbole.h"
 #include "SymboleValue.h"
 #include "Exceptions.h"
-#include <typeinfo>
+
+using namespace std;
 
 ////////////////////////////////////////////////////////////////////////////////
 // NoeudSeqInst
@@ -142,9 +144,11 @@ NoeudInstEcrire::NoeudInstEcrire() : m_donnees() {
 int NoeudInstEcrire::executer() {
     for (unsigned int i = 0; i < m_donnees.size(); i++) {
         // On regarde si l'objet pointé par m_donnees est de type SymboleValue et si c'est une chaine
-        if ((typeid (m_donnees[i]) == typeid (SymboleValue))&& *((SymboleValue*) m_donnees[i]) == "<CHAINE>") {
+        if ((typeid (*(m_donnees[i])) == typeid (SymboleValue)) &&
+                *((SymboleValue*) (m_donnees[i])) == "<CHAINE>") {
             // on exécute chaque instruction d'écrire
-            cout << m_donnees[i];
+            string chaine = ((SymboleValue*) (m_donnees[i]))->getChaine();
+            cout << chaine.substr(1, chaine.length() - 2);
         } else {
 
             cout << m_donnees[i]->executer();
@@ -155,6 +159,7 @@ int NoeudInstEcrire::executer() {
 }
 
 void NoeudInstEcrire::ajoute(Noeud* instruction) {
+
     if (instruction != nullptr) m_donnees.push_back(instruction);
 }
 
@@ -169,9 +174,10 @@ NoeudInstRepeter::NoeudInstRepeter(Noeud* instruction, Noeud* condition)
 }
 
 int NoeudInstRepeter::executer() {
-    do{
+    do {
         m_seqInstru->executer();
-    } while(m_express->executer());
+    } while (m_express->executer());
+
     return 0; // La valeur renvoyée ne représente rien !
 }
 
@@ -187,8 +193,9 @@ NoeudInstPour::NoeudInstPour(Noeud* affec, Noeud* expression, Noeud * affect, No
 }
 
 int NoeudInstPour::executer() {
- ////////////////////A COMPLETER Changer nom variable..
-    for(m_affec->executer();m_express->executer();m_affect->executer()){
+    ////////////////////A COMPLETER Changer nom variable..
+    for (m_affec->executer(); m_express->executer(); m_affect->executer()) {
+
         m_seqInstru->executer();
     }
 }
@@ -197,11 +204,10 @@ int NoeudInstPour::executer() {
 // NoeudInstLire
 ////////////////////////////////////////////////////////////////////////////////
 
-NoeudInstLire::NoeudInstLire()
-:
-{
-}
-
-int NoeudInstLire::executer() {
-    
-}
+//NoeudInstLire::NoeudInstLire()
+//      : {
+//}
+//
+//int NoeudInstLire::executer() {
+//
+//}

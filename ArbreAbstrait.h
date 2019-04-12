@@ -7,7 +7,8 @@
 #include <vector>
 #include <iostream>
 #include <iomanip>
-using namespace std;
+#include <string>
+
 
 #include "Symbole.h"
 #include "Exceptions.h"
@@ -190,4 +191,3 @@ private:
     vector<Noeud *> m_variables;
 }
 
-#endif /* ARBREABSTRAIT_H */

@@ -225,7 +225,6 @@ Noeud* Interpreteur::instRepeter() {
 
 Noeud* Interpreteur::instPour() {
     // <instPour> ::= pour ([<affectation>]; <expression>; [affectation]) <seqInst> finpour
-    NoeudInstPour* pr = new NoeudInstPour();
     testerEtAvancer("pour");
     testerEtAvancer("(");
     Noeud *affect;
@@ -238,7 +237,6 @@ Noeud* Interpreteur::instPour() {
     Noeud *affecta;
     if (m_lecteur.getSymbole() == "<VARIABLE>") {
         Noeud *affecta = affectation();
-        pr->ajoute(affecta);
     }
     testerEtAvancer(")");
     Noeud* sequence = seqInst();

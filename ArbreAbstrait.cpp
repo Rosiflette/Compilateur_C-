@@ -204,10 +204,15 @@ int NoeudInstPour::executer() {
 // NoeudInstLire
 ////////////////////////////////////////////////////////////////////////////////
 
-//NoeudInstLire::NoeudInstLire()
-//      : {
-//}
+NoeudInstLire::NoeudInstLire()
+      : m_variables(){
+}
 //
 //int NoeudInstLire::executer() {
+//    for (unsigned int i = 0; i < m_variables.size(); i++) {
+//        // On regarde si l'objet pointé par m_donnees est de type SymboleValue et si c'est une chaine
+//        
+//            cout >> m_donnees[i]->executer();
+//        
 //
 //}

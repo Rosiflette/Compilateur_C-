@@ -187,7 +187,9 @@ public:
     NoeudInstLire();
     ~NoeudInstLire();
     int executer();
+    void ajoute(Noeud* instruction);
 private:  
     vector<Noeud *> m_variables;
 };
 
+#endif

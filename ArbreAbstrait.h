@@ -187,7 +187,7 @@ public:
     ~NoeudInstLire();
     int executer();
 private:  
-    // Variable + vecteur de variables
+    vector<Noeud *> m_variables;
 }
 
 #endif /* ARBREABSTRAIT_H */

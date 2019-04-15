@@ -114,23 +114,15 @@ private:
     Noeud* m_sequence;
 };
 ////////////////////////////////////////////////////////////////////////////////
-
 class NoeudInstSiRiche : public Noeud {
 public:
-    NoeudInstSiRiche(Noeud* condition, Noeud* sequence, vector<Noeud *> & conditionsSinon, vector<Noeud *> & sequencesSinon, Noeud* sequenceElse = nullptr);
-    NoeudInstSiRiche(Noeud* condition, Noeud* sequence, Noeud* sequenceElse = nullptr);
-    
+    NoeudInstSiRiche(vector<Noeud *> &conditions, vector<Noeud *> & sequences);
 
-    ~NoeudInstSiRiche() {
-    }
+    ~NoeudInstSiRiche() {}
     int executer();
 private:
-    vector<Noeud *> t{nullptr}; // pas beau...
-    vector<Noeud *> & m_conditions = t;
-    vector<Noeud *> & m_sequences = t;
-    Noeud* m_sequenceSi;
-    Noeud* m_conditionSi;
-    Noeud* m_sequenceElse;
+    vector<Noeud *> m_conditions;
+    vector<Noeud *> m_sequences;
 
 };
 ////////////////////////////////////////////////////////////////////////////////
@@ -182,14 +174,18 @@ private:
 
 ////////////////////////////////////////////////////////////////////////////////
 
+
+
 class NoeudInstLire : public Noeud {
 public:
     NoeudInstLire();
-    ~NoeudInstLire();
+
+    ~NoeudInstLire() {}
     int executer();
     void ajoute(Noeud* instruction);
-private:  
+private:
     vector<Noeud *> m_variables;
+
 };
 
 #endif

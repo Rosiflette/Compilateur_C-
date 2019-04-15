@@ -1,9 +1,15 @@
 # Fichier de test
 # Les lignes de commentaires commencent par #
 procedure principale()
-    i = 18;
-    a = 1;
-   repeter i=i-1;
-   jusqua (i==a)
+  i = 18;
+  si (i<3)
+    i = 0;
+  sinonsi (i==18)
+    i=1;
+  sinonsi (i>10)
+    i=0;
+  sinon
+   i = 0;
+   finsi
 finproc
 # Commentaire Final

@@ -1,9 +1,10 @@
 # Fichier de test
 # Les lignes de commentaires commencent par #
 procedure principale()
-    i = 18;
-    a = 1;
-   repeter i=i-1;
-   jusqua (i==a)
+    i = 0;
+  tantque(i!=1)
+    i= i+1;
+  fintantque
+    #test = (i==1);
 finproc
 # Commentaire Final

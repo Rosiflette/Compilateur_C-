@@ -87,33 +87,22 @@ int NoeudInstSi::executer() {
 // NoeudInstSiRiche
 ////////////////////////////////////////////////////////////////////////////////
 
-NoeudInstSiRiche::NoeudInstSiRiche(Noeud* condition, Noeud* sequence, vector<Noeud *> & conditionsSinon, vector<Noeud *> & sequencesSinon, Noeud* sequenceElse)
-: m_conditionSi(condition), m_sequenceSi(sequence), m_conditions(conditionsSinon), m_sequences(sequencesSinon), m_sequenceElse(sequenceElse) {
+NoeudInstSiRiche::NoeudInstSiRiche(vector<Noeud*> & conditions, vector<Noeud*> & sequences)
+: m_conditions(conditions), m_sequences(sequences){}
 
-}
 
-NoeudInstSiRiche::NoeudInstSiRiche(Noeud* condition, Noeud* sequence, Noeud* sequenceElse)
-: m_conditionSi(condition), m_sequenceSi(sequence), m_sequenceElse(sequenceElse) {
-
-}
 
 int NoeudInstSiRiche::executer() {
-    bool condition = false;
-    if (m_conditionSi->executer()) {
-        condition = true;
-        m_sequenceSi->executer();
-    } else if (condition != true) {
-        int i = 0;
-        while (i < m_conditions.size() && condition != true) {
-            if (m_conditions[i]->executer()) {
-                condition = true;
-                m_sequences[i]->executer();
-            }
-            i++;
+    bool sinon = true;
+    for (int i = 0 ; i < m_conditions.size(); i++) {
+        if (m_conditions[i]->executer()) {
+            m_sequences[i]->executer();
+            sinon = false;
         }
-    } else {
-        if (m_sequenceElse != nullptr) {
-            m_sequenceElse->executer();
+    }
+    if (sinon) {
+        if (m_sequences.size() > m_conditions.size()) {
+            m_sequences[m_sequences.size()-1]->executer();
         }
     }
 }
@@ -176,7 +165,7 @@ NoeudInstRepeter::NoeudInstRepeter(Noeud* instruction, Noeud* condition)
 int NoeudInstRepeter::executer() {
     do {
         m_seqInstru->executer();
-    } while (m_express->executer());
+    } while (!m_express->executer());
 
     return 0; // La valeur renvoyée ne représente rien !
 }
@@ -193,11 +182,31 @@ NoeudInstPour::NoeudInstPour(Noeud* affec, Noeud* expression, Noeud * affect, No
 }
 
 int NoeudInstPour::executer() {
-    ////////////////////A COMPLETER Changer nom variable..
-    for (m_affec->executer(); m_express->executer(); m_affect->executer()) {
-
+    if(m_affec == nullptr && m_affect == nullptr){
+        while(m_express-> executer()){
+            m_seqInstru->executer();
+        }
+    }
+    else if (m_affec == nullptr && m_affect != nullptr){
+        
+        while(m_express->executer()){
+            m_affect->executer();
+            m_seqInstru->executer();
+        }
+    }
+    else if (m_affec != nullptr && m_affect == nullptr){
+        
+        while(m_express->executer()){
+            m_affec->executer();
+            m_seqInstru->executer();
+        }
+    }
+    else{
+        for (m_affec->executer(); m_express->executer(); m_affect->executer()) {
         m_seqInstru->executer();
     }
+    }
+    
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -205,15 +214,17 @@ int NoeudInstPour::executer() {
 ////////////////////////////////////////////////////////////////////////////////
 
 NoeudInstLire::NoeudInstLire()
-      : m_variables(){
+: m_variables()
+{
 }
 
 int NoeudInstLire::executer() {
-    for (unsigned int i = 0; i < m_variables.size(); i++) {
-        
-            cout >> m_variables; // toujours faux
-        
+    unsigned int entree = 0;
+    for (unsigned int i = 0; i < m_variables.size() ; i++) {
+        cin >> entree;
+        ((SymboleValue*) m_variables[i])->setValeur(entree);
     }
+    return 0;
 }
 void NoeudInstLire::ajoute(Noeud* instruction) {
 

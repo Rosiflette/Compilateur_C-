@@ -1,9 +1,6 @@
 # Fichier de test
 # Les lignes de commentaires commencent par #
 procedure principale()
-    i = 18;
-    a = 1;
-   repeter i=i-1;
-   jusqua (i==a)
+    lire(a, b, c)
 finproc
 # Commentaire Final

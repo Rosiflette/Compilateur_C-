@@ -2,7 +2,7 @@
 # Les lignes de commentaires commencent par #
 procedure principale()
     
-    pour (i=0;i!=1;)
+    pour ( i=0 ;i!=5;)
         i=i+1;
     finpour
 finproc

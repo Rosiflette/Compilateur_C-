@@ -83,6 +83,14 @@ int NoeudInstSi::executer() {
     return 0; // La valeur renvoyée ne représente rien !
 }
 
+void NoeudInstSi::traduitEnCPP(ostream & cout,unsigned int indentation)const{
+    cout << setw(4*indentation)<<""<<"if (";                     // Ecrit "if (" avec un décalage de 4*indentation espaces   
+    m_condition->traduitEnCPP(cout,0);                          // Traduit la condition en C++ sans décalage   
+    cout <<") {"<< endl;                                        // Ecrit ") {" et passe à la ligne   
+    m_sequence->traduitEnCPP(cout, indentation+1);              // Traduit en C++ la séquence avec indentation augmentée   
+    cout << setw(4*indentation)<<""<<"}"<< endl;                // Ecrit "}" avec l'indentation initiale et passe à la ligne 
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // NoeudInstSiRiche
 ////////////////////////////////////////////////////////////////////////////////
@@ -182,32 +190,39 @@ NoeudInstPour::NoeudInstPour(Noeud* affec, Noeud* expression, Noeud * affect, No
 }
 
 int NoeudInstPour::executer() {
-    if(m_affec == nullptr && m_affect == nullptr){
-        while(m_express-> executer()){
-            m_seqInstru->executer();
-        }
-    }
-    else if (m_affec == nullptr && m_affect != nullptr){
-        
-        while(m_express->executer()){
-            m_affect->executer();
-            m_seqInstru->executer();
-        }
-    }
-    else if (m_affec != nullptr && m_affect == nullptr){
-        
-        while(m_express->executer()){
-            m_affec->executer();
-            m_seqInstru->executer();
-        }
-    }
-    else{
-        for (m_affec->executer(); m_express->executer(); m_affect->executer()) {
+//    if(m_affec == nullptr && m_affect == nullptr){
+//        while(m_express-> executer()){
+//            m_seqInstru->executer();
+//        }
+//    }
+//    else if (m_affec == nullptr && m_affect != nullptr){
+//        
+//        while(m_express->executer()){
+//            m_affect->executer();
+//            m_seqInstru->executer();
+//        }
+//    }
+//    else if (m_affec != nullptr && m_affect == nullptr){
+//        
+//        while(m_express->executer()){
+//            m_affec->executer();
+//            m_seqInstru->executer();
+//        }
+//    }
+//    else{
+//        for (m_affec->executer(); m_express->executer(); m_affect->executer()) {
+//        m_seqInstru->executer();
+//    }
+//    }
+    if(m_affec!= nullptr)
+        m_affec->executer();
+    while(m_express->executer()){
         m_seqInstru->executer();
+        if(m_affect != nullptr)
+            m_affect->executer();
     }
-    }
-    
 }
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // NoeudInstLire

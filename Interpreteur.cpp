@@ -227,16 +227,16 @@ Noeud* Interpreteur::instPour() {
     // <instPour> ::= pour ([<affectation>]; <expression>; [affectation]) <seqInst> finpour
     testerEtAvancer("pour");
     testerEtAvancer("(");
-    Noeud *affect = nullptr;
+    Noeud* affect = nullptr;
     if (m_lecteur.getSymbole() == "<VARIABLE>") {
-        Noeud *affect = affectation();
+        affect = affectation();
     }
     testerEtAvancer(";");
     Noeud* expresss = expression();
     testerEtAvancer(";");
-    Noeud *affecta = nullptr;
+    Noeud* affecta = nullptr;
     if (m_lecteur.getSymbole() == "<VARIABLE>") {
-        Noeud *affecta = affectation();
+        affecta = affectation();
     }
     testerEtAvancer(")");
     Noeud* sequence = seqInst();

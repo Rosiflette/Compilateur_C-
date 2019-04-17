@@ -66,24 +66,42 @@ Noeud* Interpreteur::seqInst() {
 Noeud* Interpreteur::inst() {
     // <inst> ::= <affectation>  ; | <instSi> | <instTq>
     //<inst> ::= <affectation> ;| <instSiRiche> | <instTq> | <instRepeter> ;| <instPour> | <instEcrire> ;| <instLire> ;
-    if (m_lecteur.getSymbole() == "<VARIABLE>") {
-        Noeud *affect = affectation();
-        testerEtAvancer(";");
-        return affect;
-    } else if (m_lecteur.getSymbole() == "tantque")
-        return instTq();
-    else if (m_lecteur.getSymbole() == "si") // Mettre dorénavant le siriche.. Test toujours à faire !
-        return instSiRiche();
-        // Compléter les alternatives chaque fois qu'on rajoute une nouvelle instruction
-    else if (m_lecteur.getSymbole() == "ecrire")
-        return instEcrire();
-    else if (m_lecteur.getSymbole() == "repeter")
-        return instRepeter();
-    else if (m_lecteur.getSymbole() == "lire")
-        return instLire();
-    else if (m_lecteur.getSymbole() == "pour")
-        return instPour();
-    else erreur("Instruction incorrecte");
+
+    try {
+        if (m_lecteur.getSymbole() == "<VARIABLE>") {
+            Noeud *affect = affectation();
+            testerEtAvancer(";");
+            return affect;
+        } else if (m_lecteur.getSymbole() == "tantque")
+            return instTq();
+        else if (m_lecteur.getSymbole() == "si") // Mettre dorénavant le siriche.. Test toujours à faire !
+            return instSiRiche();
+            // Compléter les alternatives chaque fois qu'on rajoute une nouvelle instruction
+        else if (m_lecteur.getSymbole() == "ecrire")
+            return instEcrire();
+        else if (m_lecteur.getSymbole() == "repeter")
+            return instRepeter();
+        else if (m_lecteur.getSymbole() == "lire")
+            return instLire();
+        else if (m_lecteur.getSymbole() == "pour")
+            return instPour();
+        else erreur("Instruction incorrecte");
+    }
+    catch (SyntaxeException& e){
+        while( m_lecteur.getSymbole() != "tantque" && m_lecteur.getSymbole() != "si" && m_lecteur.getSymbole() != "repeter" && m_lecteur.getSymbole() == "lire" && m_lecteur.getSymbole() == "pour" && m_lecteur.getSymbole() == "finproc"){
+            m_lecteur.avancer();
+      
+        }
+        
+        if( m_lecteur.getSymbole() != "tantque" && m_lecteur.getSymbole() != "si" && m_lecteur.getSymbole() != "repeter" && m_lecteur.getSymbole() == "lire" && m_lecteur.getSymbole() == "pour"){
+            inst();
+        }
+        throw e; 
+        
+        
+    }
+
+
 }
 
 Noeud* Interpreteur::affectation() {
@@ -157,21 +175,21 @@ Noeud* Interpreteur::instSiRiche() {
     vectExpression.push_back(expression()); // On ajoute la condition
     testerEtAvancer(")");
     vectSequence.push_back(seqInst()); // On ajoute la séquence d'instruction
-    while (m_lecteur.getSymbole() == "sinonsi"){
+    while (m_lecteur.getSymbole() == "sinonsi") {
         testerEtAvancer("sinonsi");
         testerEtAvancer("(");
         vectExpression.push_back(expression());
         testerEtAvancer(")");
         vectSequence.push_back(seqInst());
 
-    }    
+    }
     if (m_lecteur.getSymbole() == "sinon") {
         testerEtAvancer("sinon");
-       vectSequence.push_back(seqInst()); // On ajoute la séquence d'instruction
+        vectSequence.push_back(seqInst()); // On ajoute la séquence d'instruction
     }
     testerEtAvancer("finsi");
     return new NoeudInstSiRiche(vectExpression, vectSequence);
-    
+
 
 }
 
@@ -198,6 +216,7 @@ Noeud* Interpreteur::instEcrire() {
         m_lecteur.avancer();
     } else
         param = expression();
+    
     ecr->ajoute(param);
     while (m_lecteur.getSymbole() == ",") {
         testerEtAvancer(",");
@@ -254,7 +273,7 @@ Noeud* Interpreteur::instLire() {
     } else {
         erreur("Attention vous n'avez pas donner une variable");
     }
-    while(m_lecteur.getSymbole() == ",") {
+    while (m_lecteur.getSymbole() == ",") {
         m_lecteur.avancer();
         if (m_lecteur.getSymbole() == "<VARIABLE>") {
             lire->ajoute(expression());

@@ -155,6 +155,13 @@ Noeud* Interpreteur::facteur() {
     return fact;
 }
 
+    void Interpreteur::traduitEnCPP(ostream & cout,unsigned int indentation)const {
+        cout << setw(2*indentation) << " " << "int main() {" << endl;
+        getArbre()->traduitEnCPP(cout, indentation+1); 
+        cout << setw(2*(indentation+1))  << " " << "return 0" << endl;
+        cout << setw(2*indentation) << "}" << endl;
+    }
+
 Noeud* Interpreteur::instSi() {
     // <instSi> ::= si ( <expression> ) <seqInst> finsi
     testerEtAvancer("si");

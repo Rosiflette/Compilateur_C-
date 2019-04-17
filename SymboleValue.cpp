@@ -23,3 +23,12 @@ ostream & operator<<(ostream & cout, const SymboleValue & symbole) {
   else cout << "indefinie ";
   return cout;
 }
+
+void SymboleValue::traduitEnCPP(ostream & cout,unsigned int indentation)const {
+    cout << setw(2*indentation) << " ";
+    if (m_defini)
+        cout << m_chaine;
+    else 
+        cout << m_valeur;
+        
+}

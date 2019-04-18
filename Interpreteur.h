@@ -44,9 +44,9 @@ private:
     Noeud*  instLire(); // <instLire> ::= lire ( <variable> { , <variable> } )
 
     // outils pour simplifier l'analyse syntaxique
-    void tester (const string & symboleAttendu) const throw (SyntaxeException);   // Si symbole courant != symboleAttendu, on lève une exception
-    void testerEtAvancer(const string & symboleAttendu) throw (SyntaxeException); // Si symbole courant != symboleAttendu, on lève une exception, sinon on avance
-    void erreur (const string & mess) const throw (SyntaxeException);             // Lève une exception "contenant" le message mess
+    void tester (const string & symboleAttendu) const ;//throw (SyntaxeException);   // Si symbole courant != symboleAttendu, on lève une exception
+    void testerEtAvancer(const string & symboleAttendu);// throw (SyntaxeException); // Si symbole courant != symboleAttendu, on lève une exception, sinon on avance
+    void erreur (const string & mess) const ;//throw (SyntaxeException);             // Lève une exception "contenant" le message mess
 };
 
 #endif /* INTERPRETEUR_H */

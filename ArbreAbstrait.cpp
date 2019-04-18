@@ -138,7 +138,7 @@ void NoeudInstSiRiche::traduitEnCPP(ostream& cout, unsigned int indentation) con
     m_sequences[0]->traduitEnCPP(cout,indentation+1);
     cout << setw(4*indentation) << "}";
     for (int i=1;i <m_conditions.size();i++){
-        out << setw(4*indentation) << "else if (";
+        cout << setw(4*indentation) << "else if (";
         m_conditions[i]->traduitEnCPP(cout,0);
         cout << ") {" << endl;
         m_sequences[i]->traduitEnCPP(cout,indentation+1);
@@ -233,7 +233,7 @@ void NoeudInstRepeter::traduitEnCPP(ostream& cout, unsigned int indentation) con
     cout << setw(indentation*4) << "do {" << endl;
     m_seqInstru->traduitEnCPP(cout, indentation+1);
     cout << setw(indentation*4) << "while (";
-    m_express->traduitEnCPP(cout 0);
+    m_express->traduitEnCPP(cout, 0);
     cout << ");" << endl;
 }
 

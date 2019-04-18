@@ -12,7 +12,7 @@ void Interpreteur::analyse() {
     m_arbre = programme(); // on lance l'analyse de la première règle
 }
 
-void Interpreteur::tester(const string & symboleAttendu) const throw (SyntaxeException) {
+void Interpreteur::tester(const string & symboleAttendu) const {// throw (SyntaxeException) {
     // Teste si le symbole courant est égal au symboleAttendu... Si non, lève une exception
     static char messageWhat[256];
     if (m_lecteur.getSymbole() != symboleAttendu) {
@@ -24,13 +24,13 @@ void Interpreteur::tester(const string & symboleAttendu) const throw (SyntaxeExc
     }
 }
 
-void Interpreteur::testerEtAvancer(const string & symboleAttendu) throw (SyntaxeException) {
+void Interpreteur::testerEtAvancer(const string & symboleAttendu){// throw (SyntaxeException) {
     // Teste si le symbole courant est égal au symboleAttendu... Si oui, avance, Sinon, lève une exception
     tester(symboleAttendu);
     m_lecteur.avancer();
 }
 
-void Interpreteur::erreur(const string & message) const throw (SyntaxeException) {
+void Interpreteur::erreur(const string & message) const{// throw (SyntaxeException) {
     // Lève une exception contenant le message et le symbole courant trouvé
     // Utilisé lorsqu'il y a plusieurs symboles attendus possibles...
     static char messageWhat[256];

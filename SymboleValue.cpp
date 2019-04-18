@@ -26,9 +26,9 @@ ostream & operator<<(ostream & cout, const SymboleValue & symbole) {
 
 void SymboleValue::traduitEnCPP(ostream & cout,unsigned int indentation)const {
     cout << setw(2*indentation) << " ";
-    if (m_defini)
-        cout << m_chaine;
-    else 
+//    if (m_defini)
+//        cout << m_valeur;
+//    else 
         cout << m_valeur;
         
 }

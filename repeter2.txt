@@ -1,0 +1,6 @@
+procedure principale()
+    test = 18;
+    val_Test = 1;
+   repeter test=test-1;
+   jusqua (test==val_Test)
+finproc

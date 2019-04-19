@@ -82,6 +82,11 @@ int NoeudOperateurBinaire::executer() {
 }
 
 void NoeudOperateurBinaire::traduitEnCPP(ostream& cout, unsigned int indentation) const {
+    cout << setw(4*indentation);
+    m_operandeGauche->traduitEnCPP(cout,0);
+    cout << " " << m_operateur.getChaine();
+    m_operandeDroit->traduitEnCPP(cout,0);
+    
     
 }
 

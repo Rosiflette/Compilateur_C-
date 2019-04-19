@@ -1,7 +1,7 @@
 # Fichier de test
 # Les lignes de commentaires commencent par #
 procedure principale()
-    i = 1;
-    ecrire("i est entre ", 0, " et ", 3, " car i vaut : ", i)
+    test = 1;
+    ecrire("test est entre ", 0, " et ", 3, " car test vaut : ", test)
 finproc
 # Commentaire Final
